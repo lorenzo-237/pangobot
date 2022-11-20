@@ -1,9 +1,12 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const { Client, GatewayIntentBits, Collection, ActivityType } = require('discord.js');
 const { discordToken } = require('./config/config.json');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+	intents: [GatewayIntentBits.Guilds],
+	presence: { activities: [{ type: ActivityType.Watching, name: 'aquaticra', url: 'www.twitch.tv/aquaticra' }], status: 'online' },
+});
 
 client.commands = new Collection();
 
